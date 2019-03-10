@@ -12,7 +12,7 @@
       <section class="container">
         <nav role="navigation">
           <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
+            <li><%= render "sign_in_sign_out.html", conn: @conn %></li>
           </ul>
         </nav>
         <a href="http://phoenixframework.org/" class="phx-logo">
