@@ -19,6 +19,13 @@ defmodule TwitterWeb.TweetController do
 
     case Tweets.create_tweet(Map.put(tweet_params, "user_id", user.id)) do
       {:ok, tweet} ->
+       # preload user data
+        tweet = Twitter.Repo.preload(tweet, [:user])
+        # render html template as string
+        rendered_panel = Phoenix.View.render_to_string(TwitterWeb.TweetView, "panel.html", conn: conn, tweet: tweet)
+        # send to other users
+        TwitterWeb.Endpoint.broadcast!("tweets_strip:lobby", "shout", %{panel: rendered_panel})
+
         conn
         |> put_flash(:info, "Tweet created successfully.")
         |> redirect(to: Routes.tweet_path(conn, :show, tweet))

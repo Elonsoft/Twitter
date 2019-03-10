@@ -3,6 +3,7 @@ defmodule TwitterWeb.UserSocket do
 
   ## Channels
   # channel "room:*", TwitterWeb.RoomChannel
+  channel "tweets_strip:lobby", TwitterWeb.TweetsStripChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
