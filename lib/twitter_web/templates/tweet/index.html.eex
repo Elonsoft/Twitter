@@ -1,0 +1,8 @@
+<span><%= button "New Tweet", to: Routes.tweet_path(@conn, :new), method: "get" %></span>
+
+<div id="tweets">
+  <%= for tweet <- @tweets do %>
+    <%= render "panel.html", conn: @conn, tweet: tweet %> 
+  <% end %>
+</div>
+

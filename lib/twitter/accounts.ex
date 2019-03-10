@@ -101,7 +101,7 @@ defmodule Twitter.Accounts do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
-  
+
   def authenticate_by_email_password(email, password) do
     query =
       from u in User,

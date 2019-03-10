@@ -13,6 +13,7 @@
         <nav role="navigation">
           <ul>
             <li><%= render "sign_in_sign_out.html", conn: @conn %></li>
+            <li><%= link "Tweets", to: Routes.tweet_path(@conn, :index), class: "btn btn-primary" %><li>
           </ul>
         </nav>
         <a href="http://phoenixframework.org/" class="phx-logo">

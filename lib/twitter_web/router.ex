@@ -25,9 +25,10 @@ defmodule TwitterWeb.Router do
     resources "/sessions", SessionController, only: [:new, :create, :delete], singleton: true
   end
 
-  scope "/", BrawitterWeb do
+  scope "/", TwitterWeb do
     pipe_through [:browser, :browser_auth]
     resources "/users", UserController, only: [:show, :index, :update, :edit]
+    resources "/tweets", TweetController
   end
 
   def authenticate_user(conn, _) do

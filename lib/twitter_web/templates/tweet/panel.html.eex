@@ -1,0 +1,9 @@
+<div class="panel panel-default" id="tweet-panel">
+  <div class="panel header" id="tweet-panel-header">
+    <div> <b><%= @tweet.user.username %></b>   @<%= @tweet.user.email %></div>
+    <%= link "Show", to: Routes.tweet_path(@conn, :show, @tweet) %>
+  </div>
+  <div class="panel body" id="tweet-panel-body">
+    <%= @tweet.tweet %>
+  </div>
+</div>
