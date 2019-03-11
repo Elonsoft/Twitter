@@ -1,7 +1,7 @@
 use Mix.Config
 
-config :hello, TwitterWeb.Endpoint,
-  http: [port: System.get_env("PORT")],
+config :twitter, TwitterWeb.Endpoint,
+  http: [:inet6, port: System.get_env("PORT") || 4000],
   url: [scheme: "https", host: "safe-caverns-77003.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
@@ -11,7 +11,8 @@ config :hello, TwitterWeb.Endpoint,
 config :logger, level: :info
 
 # Configure your database
-config :hello, Twitter.Repo,
+config :twitter, Twitter.Repo,
+  adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
   ssl: true
